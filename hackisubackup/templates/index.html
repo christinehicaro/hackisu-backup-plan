@@ -16,11 +16,10 @@
 
     <div class="jumbotron">
       <div id = "jtcontent">
-        <h1>CLMapps</h1>
-        <p>
+        <center><h1>Mood Enhancer</h1></center>
+        <center><p>
           Find GIFs and songs based on your mood!
-        </p>
-        <p><a class="btn btn-primary btn-lg" href="popularplaces" role="button">See some examples</a></p>
+        </p></center>
       </div>
       <br>
       <div id = "searchcontent"><form action = "/results" method = "post">
@@ -34,6 +33,9 @@
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
+        <br>
+        <br>
+        <center><p><a id = "randombutton" class="btn btn-primary btn-lg" href="/random" role="button">Give me a random GIF and song</a></p></center>
       </form></div>
 
     </div>
@@ -42,14 +44,15 @@
       <h1> Can't think of a mood yourself? Explore one here:</h1>
       <br>
       <br>
-      <button><a href = "/happy"> Happy </button>
-      <br>
-      <br>
-      <button><a href = "/sad"> sad </button>
-      <br>
-      <br>
-      <button><a href = "/surprised"> surprised </button>
-
+      <form type = "get" action = "/happy">
+        <button style = "width: 225px; height: 50px;">Happy</button>
+      </form>
+      <form type = "get" action = "/sad">
+        <button style = "width: 225px; height: 50px;">Sad</button>
+      </form>
+      <form type = "get" action = "/surprised">
+        <button style = "width: 225px; height: 50px;">Surprised</button>
+      </form>
     </div></center>
 
 
