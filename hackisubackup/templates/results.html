@@ -13,7 +13,24 @@
 
   <body>
 
-    <img src = "{{gif1}}"></img>
+    <center><img src = "{{gif1}}"></img></center>
+    <br>
+    <br>
+    {% for i in searches %}
+     <center><div id = "results{{loop.index}}">
+
+       <strong>Song:</strong>
+       <span class="song">{{i.title}}</span><br>
+       <strong>Artist:</strong>
+       <span class="artist">{{i.artist}}</span><br>
+       <strong>Album:</strong>
+       <span class="album">{{i.album}}</span><br>
+       <br>
+       Listen to {{i.title}} on <a target = "_blank" href = "http://youtube.com"> YouTube </a>
+       <br>
+       <br>
+     </div></center>
+     {% endfor %}
 
 
   </body>
