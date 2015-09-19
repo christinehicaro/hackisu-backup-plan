@@ -42,30 +42,16 @@ class MainHandler(webapp2.RequestHandler):
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
         result_template = jinja_environment.get_template('templates/results.html')
-        # template = jinja_environment.get_template('templates/results.html')
-        # example_source = urlfetch('http://api.yelp.com/v2/search?term=food&location=San+Francisco')
-        # logging.info(example_source)
-        # base_url_category = ('http://api.yelp.com/v2/search?term=')
-
-        # template_names = {}
-        # template_categories = {}
-        # template_locations = {}
-        # search_results = []
-        user_search = self.request.get('search')
-        # user_term.replace(" ", "+")
-        term = {'term' : user_search}
-        user_term = urllib.urlencode(term)
-        base_url = 'http://api.yelp.com/v2/search?term='
-        search_url = base_url + user_term
-        url_content = urlfetch.fetch(search_url).content
-        parsed_url_dictionary = json.loads(url_content)
-        yelp_url = parsed_url_dictionary
-        template_vars = {"yelp1": yelp_url}
-        # url_content = urlfetch.fetch(search_url).content
-        # parsed_url_dictionary = json.loads(url_content)
-        # template = jinja_environment.get_template('templates/results.html')
-        # self.response.write(template.render())
-        self.response.write(result_template.render(template_vars))
+        base_term = "http://api.giphy.com/v1/gifs/search?q="
+        user_input = self.request.get("search")
+        api_key_url = "&api_key=dc6zaTOxFJmzC&limit=10"
+        giphy_data_source = urlfetch.fetch(base_term + user_input + api_key_url)
+        logging.info(base_term + user_input + api_key_url)
+        giphy_json_content = giphy_data_source.content
+        parsed_giphy_dictionary = json.loads(giphy_json_content)
+        gif_url= parsed_giphy_dictionary['data'][0]['images']['original']['url']
+        template_vars = {"gif1": gif_url}
+        self.response.out.write(result_template.render(template_vars))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
